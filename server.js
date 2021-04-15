@@ -4,7 +4,7 @@ const port = 3000
 
 //app responds with "Hello World!" for requests to the root URL
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('testing if master changed to main')
 })
 
 //starts a server and listens on port 3000
