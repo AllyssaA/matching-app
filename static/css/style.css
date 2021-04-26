@@ -1,0 +1,29 @@
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+
+}
+.form{
+    display: flex;
+    justify-content: center;
+    height: 8em;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+form > label{
+    
+    
+}
+
+input{
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #1E2839;
+   
+}

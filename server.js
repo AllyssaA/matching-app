@@ -2,12 +2,24 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-//app responds with "Hello World!" for requests to the root URL
+const handlebars = require('express-handlebars')
+
+app.set('view engine', 'hbs')
+
+app.engine('hbs', handlebars({
+  layoutsDir: `${__dirname}/views/layouts`,
+  extname: 'hbs',
+  defaultLayout: 'index',
+  partialsDir: `${__dirname}/views/partials`
+}))
+
+app.use(express.static('static'))
+
 app.get('/', (req, res) => {
-  res.send('testing if master changed to main')
+  res.render('main')
 })
 
-//starts a server and listens on port 3000
+//start server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

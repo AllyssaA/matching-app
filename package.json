@@ -5,16 +5,18 @@
   "license": "Apache-2.0",
   "repository": "AllyssaA/matching-app",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon index.js"
   },
   "author": {
     "name": "AllyssaA",
     "url": "https://github.com/AllyssaA"
   },
   "devDependencies": {
-    "camelcase": "^6.2.0",
-    "chalk": "^4.1.0",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "express-handlebars": "^5.3.0",
+    "handlebars": "^4.7.7"
   }
 }
