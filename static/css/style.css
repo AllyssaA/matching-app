@@ -1,14 +1,26 @@
-/*
 *{
     box-sizing:border-box;
     padding: 0;
     margin: 0;
 }
 
-h1{
+body{
+    font-family: "Montserrat";
+}
+
+/*----------------- Profiel pagina ---------------*/
+
+h1:first-of-type{
     visibility: hidden;
     margin: 0;
+    padding: 0;
+    
 }
+
+form > label{
+    font-size: 1.25em;
+}
+
 
 img{
     display: block;
@@ -19,24 +31,50 @@ img{
 .form{
     height: 100%;
     width: 100%;
-   
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+ 
 }
 
 form{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 20%;
+    padding: 0 0 .5em 1.5em;
 }
 
 label{
     display: flex;
     flex-direction: column;
-    
 }
 
 input{
-    width: 50%;
-    outline: 0;
-    border-width: 0 0 2px;
-    border-color: #1E2839;
+    width: 85%;
+    font-size: 0.9375em;
+    border-width: 0 0 1px;
+    border-color: #707070;
     padding: 1.25em 0 0 0;
+}
+
+/*----------------- bookList pagina ---------------*/
+
+.booklist{
+    width: 100%;
+    padding: 0 1.5em;
+}
+
+
+.booklist th, tr{
+    text-align: left;
+    height: 2em;
+}
+
+.booklist th{
+    font-size: 0.9375em;
+    
+}
+
+.booklist td{
+    font-size: 0.75em;
+    
 }

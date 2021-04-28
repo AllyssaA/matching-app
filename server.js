@@ -38,25 +38,24 @@ const fakeApi = () => {
   ]
 }
 
-
 app.get('/', (req, res) => {
   res.render('main', {layout: 'index', bookList: fakeApi()})
-  console.log("main page")
+  console.log("rendering main page ")
 })
 
-app.get('/listEdit', (req, res) => {
-   res.render('listEdit', {layout: 'index', bookList: fakeApi()})
-   console.log("list edit page")
+app.get('/listedit', (req, res) => {
+   res.render('listedit', {layout: 'index', bookList: fakeApi()})
+   console.log("rendering list edit page")
 })
 
-app.use('/addBook', (req, res) => {
-  res.render('addBook', {layout: 'index'})
-  console.log("addBook page")
+app.use('/addbook', (req, res) => {
+  res.render('addbook', {layout: 'index'})
+  console.log("rendering addBook page")
 })
 
-app.use('*', (req, res) => {
-  res.render('404')
-  console.log('sike page not found')
+app.use(function (req,res,next){
+	res.status(404).render('404')
+  console.log("sike, page doesn't exist, check path")
 })
 
 //start server

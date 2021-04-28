@@ -1,18 +1,18 @@
-<h1>Boekenlijst</h1>
-<section class="boekenlijst">
-    <ul>
+<section>
+    <h1>Boekenlijst</h1>
+    <table class="booklist">
+        <tr>
+            <th>Titel</th>
+            <th>Auteur</th>
+            <th>Genre</th>            
+        </tr>
         {{#each bookList}}
-        <li>{{this.titel}}</li>
+        <tr>
+            <td>{{this.titel}}</td>
+            <td>{{this.auteur}}</td>
+            <td>{{this.genre}}</td>
+        </tr>
         {{/each}}
-    </ul>
-    <ul>
-        {{#each bookList}}
-        <li>{{this.auteur}}</li>
-        {{/each}}
-    </ul>
-    <ul>
-        {{#each bookList}}
-        <li>{{this.genre}}</li>
-        {{/each}}
-    </ul>
+      
+    </table>
 </section>
