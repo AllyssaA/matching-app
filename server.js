@@ -16,7 +16,7 @@ app.engine('hbs', handlebars({
 
 app.use(express.static('static'))
 
-//Block helper
+//Block helper https://www.youtube.com/watch?v=HxJzZ7fmUDQ&list=LL&index=1&t=686s
 const fakeApi = () => {
   return [
     {
@@ -53,7 +53,7 @@ app.use('/addbook', (req, res) => {
   console.log("rendering addBook page")
 })
 
-app.use(function (req,res,next){
+app.use(function (req, res, next){
 	res.status(404).render('404')
   console.log("sike, page doesn't exist, check path")
 })
@@ -62,4 +62,3 @@ app.use(function (req,res,next){
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
 })
-
