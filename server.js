@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = process.env.port || 3000
+const port = process.env.PORT || 3000
 const handlebars = require('express-handlebars')
 
 
@@ -64,8 +64,8 @@ app.use(function (req, res, next){
 })
 
 //start server
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Server listening at http://localhost:${PORT}`)
 })
 
 
