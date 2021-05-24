@@ -1,10 +1,12 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = 3000
-
+const port = process.env.port || 3000
 const handlebars = require('express-handlebars')
 
+
 app.set('view engine', 'hbs')
+app.use(express.static('static'))
 
 // Points to the necessary files
 app.engine('hbs', handlebars({
@@ -14,7 +16,10 @@ app.engine('hbs', handlebars({
   partialsDir: `${__dirname}/views/partials`
 }))
 
-app.use(express.static('static'))
+// import exported connect db function in ./mongoose file
+const connectDBMongoose = require('./config/mongoose')
+// call to connect DB function 
+connectDBMongoose()
 
 //Block helper https://www.youtube.com/watch?v=HxJzZ7fmUDQ&list=LL&index=1&t=686s
 const fakeApi = () => {
@@ -62,3 +67,7 @@ app.use(function (req, res, next){
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
 })
+
+
+
+
