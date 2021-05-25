@@ -8,9 +8,10 @@
         </tr>
         {{#each bookList}}
         <tr>
-            <td>{{this.titel}}</td>
-            <td>{{this.auteur}}</td>
+            <td>{{this.titel}}</td> 
+            <td>{{this.auteur}}</td> 
             <td>{{this.genre}}</td>
+            <td><button type="button" class="btn-edit">Bewerken</button><button type="button" class="btn-verwijderen">Verwijderen</button></td>
         </tr>
         {{/each}}
     </table>
