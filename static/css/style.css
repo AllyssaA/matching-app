@@ -6,13 +6,17 @@
 
 body{
     font-family: "Montserrat";
-    height: 100vh;
+    /* height: 100vh; */
 
       /* grid container settings */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
    
+}
+
+h1{
+    text-align: center;
 }
 
 /*----------------- Navigation ---------------*/
@@ -44,7 +48,6 @@ body{
 }
 .menu li img{
     width: 45%;
-    
 }
 
 .menu > ul{
@@ -54,14 +57,11 @@ body{
     justify-items: center;
 }
 
-/*----------------- Profiel pagina ---------------*/
-
-h1:first-of-type{
-    visibility: hidden;
-    margin: 0;
-    padding: 0;
-    
+.menu .profile-icon{
+    width: 35%;
 }
+
+/*----------------- Profiel pagina ---------------*/
 
 form > label{
     font-size: 1.25em;
@@ -80,12 +80,13 @@ form > label{
     display: grid;
     grid-template-rows: 1fr 1fr;
     justify-items: center;
+    padding: 1em 0 0 0;
 }
 
-form{
+form.profiel{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 20%;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20%; 
 }
 
 
@@ -99,9 +100,13 @@ input{
 
 /*----------------- Boekenlijst pagina ---------------*/
 
+.boekenlijst{
+    height: 50vh;
+}
+
 .booklist{
     width: 100%;
-    padding: 0 1.5em;
+    padding: 1.5em;
 }
 
 
@@ -120,4 +125,41 @@ input{
     
 }
 
+/*----------------- Boek toevoegen ---------------*/
 
+.boekToevoegen{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 20%;
+    padding: 2em 1em;
+}
+
+.input-toevoegen{
+    display: grid;
+    grid-template-rows: repeat(2, 2em);
+}
+
+.btn-toevoegen{
+    box-shadow: 0px 10px 14px -7px #9d9d9d;
+    background-color: #9DD4C9;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 13px 32px;
+    text-shadow: 0px 1px 0px #3d768a;
+    width: 15em;
+    height: 3em;
+    border: none;
+}
+
+.btn-toevoegen:hover{
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 5%);
+	background-color:#408c99;
+}
+
+.btn-toevoegen:active {
+    position: relative;
+	top:1px;
+}
