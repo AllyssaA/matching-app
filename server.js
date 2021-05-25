@@ -53,13 +53,21 @@ app.get('/', (req, res) => {
 Error: Failed to lookup view "listedit" in views directory "/app/views
 */
 
-app.get('/listedit', (req, res) => {
-  res.render('listedit', {layout: 'index', bookList: fakeApi()})
-  console.log("rendering list edit page")
-})
+// app.get('/listedit', (req, res) => {
+//   res.render('listedit', {layout: 'index', bookList: fakeApi()})
+//   console.log("rendering list edit page")
+// })
 
 app.get('/as', (req, res) => {
   res.render('as')
+})
+
+app.get('/listedit', (req, res) => {
+  res.render('listedit', {
+    layout: 'index',
+    bookList: fakeApi()
+  })
+  console.log(`rendering listedit`)
 })
 
 app.get('/addbook', (req, res) => {
