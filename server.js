@@ -4,6 +4,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const handlebars = require('express-handlebars')
 
+app.set('views', `${__dirname}/views`)
 app.set('view engine', 'hbs')
 app.use(express.static('static'))
 
@@ -47,6 +48,11 @@ app.get('/', (req, res) => {
   console.log("rendering main page ")
   })
   
+
+/* 
+Error: Failed to lookup view "listedit" in views directory "/app/views
+*/
+
 app.get('/listedit', (req, res) => {
   res.render('listedit', {layout: 'index', bookList: fakeApi()})
   console.log("rendering list edit page")
