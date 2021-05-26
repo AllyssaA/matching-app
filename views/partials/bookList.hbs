@@ -6,11 +6,12 @@
             <th>Auteur</th>
             <th>Genre</th>            
         </tr>
-        {{#each bookList}}
+        {{#each data as |boek|}}
+
         <tr>
-            <td>{{this.titel}}</td> 
-            <td>{{this.auteur}}</td> 
-            <td>{{this.genre}}</td>
+            <td>{{boek.titel}}</td> 
+            <td>{{boek.auteur}}</td> 
+            <td>{{boek.genre}}</td>
             <td><button type="button" class="btn-edit">Bewerken</button><button type="button" class="btn-verwijderen">Verwijderen</button></td>
         </tr>
         {{/each}}

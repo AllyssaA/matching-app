@@ -4,7 +4,7 @@
     "license": "Apache-2.0",
     "repository": "AllyssaA/matching-app",
     "scripts": {
-          "dev": "nodemon server.js"
+        "dev": "nodemon server.js"
     },
     "author": {
         "name": "AllyssaA",

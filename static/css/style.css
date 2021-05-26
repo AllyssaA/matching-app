@@ -12,7 +12,6 @@ body{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
-   
 }
 
 h1{
@@ -67,20 +66,30 @@ form > label{
     font-size: 1.25em;
 }
 
-.form > img{
-    border-radius: 50%;
-    width: 50%;
-    height: 75%;
+.form > .imageContainer{
+    max-height: 14em;
+    width: 9em;
     object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.imageContainer > img {
+    max-height: 14em;
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
 }
 
 .form{
-    height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-items: center;
     padding: 1em 0 0 0;
+    margin-bottom: 5em;
 }
 
 form.profiel{
@@ -88,7 +97,6 @@ form.profiel{
     grid-template-rows: 1fr 1fr;
     grid-gap: 20%; 
 }
-
 
 input{
     width: 85%;
@@ -101,6 +109,8 @@ input{
 /*----------------- Boekenlijst pagina ---------------*/
 
 .boekenlijst{
+    padding: 1em;
+    /* background-color: #f7f7f7; */
     height: 50vh;
 }
 
@@ -109,6 +119,14 @@ input{
     padding: 1.5em;
 }
 
+.boekenlijst > table {
+    border: 1px solid black;
+    background-color: #f7f7f7;
+}
+
+.boekenlijst > table tr:nth-of-type(2n+0) {
+    background-color: #bfe3db;
+}
 
 .booklist th, tr{
     text-align: left;

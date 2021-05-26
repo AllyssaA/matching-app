@@ -4,9 +4,11 @@ const app = express()
 const port = process.env.PORT || 3000
 const handlebars = require('express-handlebars')
 
-app.set('views', `${__dirname}/views`)
 app.set('view engine', 'hbs')
 app.use(express.static('static'))
+/* To retrieve the data from a form we need to handle the http request, instead of bodyparser we can use express.json() since express 4.xx */
+app.use(express.json())
+app.use(express.urlencoded())
 
 // Points to the necessary files
 app.engine('hbs', handlebars({
@@ -43,42 +45,9 @@ const fakeApi = () => {
   ]
 }
 
-app.get('/', (req, res) => {
-  res.render('main', {layout: 'index', bookList: fakeApi()})
-  console.log("rendering main page ")
-  })
-  
-
-/* 
-Error: Failed to lookup view "listedit" in views directory "/app/views
-*/
-
-// app.get('/listedit', (req, res) => {
-//   res.render('listedit', {layout: 'index', bookList: fakeApi()})
-//   console.log("rendering list edit page")
-// })
-
-app.get('/as', (req, res) => {
-  res.render('as')
-})
-
-app.get('/listedit', (req, res) => {
-  res.render('listedit', {
-    layout: 'index',
-    bookList: fakeApi()
-  })
-  console.log(`rendering listedit`)
-})
-
-app.get('/addbook', (req, res) => {
-  res.render('addbook', {layout: 'index'})
-  console.log("rendering addBook page")
-  })
-  
-app.use((req, res, next) => {
-  res.status(404).render('404')
-  console.log("sike 🤷‍♀️, page doesn't exist, check path")
-  })
+const route = require('./router/router.js');
+app.use('/', route)
+// ----
 
 //start server
 app.listen(port, () => {

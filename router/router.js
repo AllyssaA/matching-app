@@ -1,26 +1,66 @@
 const express = require('express')
+// middleware voor endpoints. nodig om dit extern
 const router = express.Router()
 
 const mongoose = require('mongoose')
-const list = require('../schema/list.schema')
+const boek = require('../schema/boek.schema')
+// const gebruiker = require('../schema/gebruiker.schema')
 
 
-app.get('/', (req, res) => {
-    res.render('main', {layout: 'index', bookList: fakeApi()})
-    console.log("rendering main page ")
+// collection, schema
+const newBoek = mongoose.model('book', boek)
+
+// functie die data pakt en deze opslaat in mongoose
+function saveData(data) {
+  let newBook = new newBoek({
+      titel: data.titel,
+      auteur: data.auteur,
+      genre: data.genre,
+      entryDate: Date()
   })
-  
-  app.get('/listedit', (req, res) => {
-     res.render('listedit', {layout: 'index', bookList: fakeApi()})
-     console.log("rendering list edit page")
+
+  newBook.save((err) => {
+    console.log(`${newBook}`)
+    if (err) return handleError(err)
   })
-  
-  app.use('/addbook', (req, res) => {
-    res.render('addbook', {layout: 'index'})
-    console.log("rendering addBook page")
+}
+
+async function getBooks() {
+  // lean() transforms mongoose object to json object
+  const data = await newBoek.find().lean()
+  return data
+}
+
+router.get('/', async (req, res) => {
+  console.log(await getBooks())
+  res.render('main',{
+      layout: 'index',
+      boeken: await getBooks()
   })
-  
-  app.use(function (req, res, next){
-      res.status(404).render('404')
-    console.log("sike, page doesn't exist, check path")
+})
+
+router.get('/listedit', async (req, res) => {
+  res.render('listedit', {
+    layout: 'index',
+    boeken: await getBooks()
   })
+  console.log(`rendering listedit`)
+})
+
+router.get('/addbook', (req, res) => {
+res.render('addbook', {layout: 'index'})
+})
+
+router.post('/addbook', (req, res) => {
+  console.log("rendering addBook page")
+  const data = {titel: req.body.titel, auteur: req.body.auteur, genre: req.body.genre}
+  saveData(data)
+  res.render('addbook', {layout: 'index'})
+})
+    
+router.use((req, res, next) => {
+    res.status(404).render('404')
+    console.log("sike 🤷‍♀️, page doesn't exist, check path")
+  })
+
+  module.exports = router
