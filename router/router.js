@@ -65,7 +65,7 @@ router.get('/', async (req, res) => {
 
 // laad boekenlijst in
 router.get('/listedit', async (req, res) => {
-  res.render('listedit', {
+  res.render('listEdit', {
     layout: 'index',
     boeken: await getBooks()
   })
