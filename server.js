@@ -23,31 +23,9 @@ const connectDBMongoose = require('./config/mongoose')
 // call to connect DB function 
 connectDBMongoose()
 
-//Block helper https://www.youtube.com/watch?v=HxJzZ7fmUDQ&list=LL&index=1&t=686s
-const fakeApi = () => {
-  return [
-    {
-      titel: 'A monster calls',
-      auteur: 'Patrick Ness',
-      genre: 'Sci-Fi'
-    },
-    {
-      titel: '1984',
-      auteur: 'George Orwell',
-      genre: 'Fantasy novel'
-    },
-    {
-      titel: 'When they call you a terrorist',
-      auteur: 'Patrisse Cullors',
-      genre: 'Biography'
-    }
-
-  ]
-}
-
 const route = require('./router/router.js');
 app.use('/', route)
-// ----
+
 
 //start server
 app.listen(port, () => {

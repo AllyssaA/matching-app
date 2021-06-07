@@ -7,7 +7,6 @@ const boek = new Schema({
     auteur: String,
     genre: String,
     entryDate: Date
-
 })
 
 module.exports = boek

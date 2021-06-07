@@ -7,12 +7,15 @@
             <th>Genre</th>            
         </tr>
         {{#each data as |boek|}}
-
         <tr>
             <td>{{boek.titel}}</td> 
             <td>{{boek.auteur}}</td> 
             <td>{{boek.genre}}</td>
-            <td><button type="button" class="btn-edit">Bewerken</button><button type="button" class="btn-verwijderen">Verwijderen</button></td>
+            <td>
+                <form action="/deleteBook" method="POST">
+                    <button type="submit" class="remove" name="id" value={{boek._id}}>delete</button>
+                </form>
+            </td>
         </tr>
         {{/each}}
     </table>

@@ -4,14 +4,20 @@
         <img src="/images/photo.jpg" alt="Profile photo">
     </div>
 
-    <form action="" class="profiel">
+    <form class="profiel">
         <label>
             Naam
-            <input type="text" placeholder="Joanna">
+            {{#each user}}
+            <p>{{this.gebruiker}}</p>
+            <a class="btn btn-success" href="/editProfiel/{{this._id}}">Bewerken</a>
         </label>
+        
         <label>
             Interesses
-            <input type="text">
+            <p>{{this.interesses}}</p>
+            {{/each}}
+            <button type="button" class="btn-edit">Bewerken</button>
+            
         </label>     
     </form>
 </section>
