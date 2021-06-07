@@ -65,7 +65,7 @@ router.get('/', async (req, res) => {
 
 // laad boekenlijst in
 router.get('/listedit', async (req, res) => {
-  res.render('listEdit', {
+  res.render('listedit', {
     layout: 'index',
     boeken: await getBooks()
   })
@@ -74,15 +74,21 @@ router.get('/listedit', async (req, res) => {
 
 // laad form om boek toe te voegen
 router.get('/addbook', (req, res) => {
-res.render('addbook', {layout: 'index'})
+  console.log('rendering addbook')
+  res.render('addbook', {
+    layout: 'index'
+  })
+ 
 })
 
 // verstuurt de data naar database
 router.post('/addbook', (req, res) => {
-  console.log("rendering addBook page")
+  console.log('rendering addBook page')
   const data = {titel: req.body.titel, auteur: req.body.auteur, genre: req.body.genre}
   saveData(data)
-  res.render('addbook', {layout: 'index'})
+  res.render('addbook', {
+    layout: 'index'
+  })
 })
 
 // sike!
