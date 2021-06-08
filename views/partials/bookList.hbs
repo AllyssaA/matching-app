@@ -20,3 +20,31 @@
         {{/each}}
     </table>
 </section>
+
+<section class="update">
+    <h2>Update boekenlijst</h2>
+    <form action="./updateBoek" method="post">
+        <label for="">
+             Kies een boek <select class="input input-drop" name="id" id="id">
+            {{#each data as |boek|}} 
+            <option value="{{boek.titel}}">{{boek.titel}}</option>
+            {{/each}}
+          </select>
+        </label>
+        <div class="input-update">
+            <label>Titel</label>
+            <input type="text" name="titel" required>
+        </div>
+        <div class="input-update">
+            <label>Auteur</label>
+            <input type="text" name="auteur" required>
+        </div>
+        <div class="input-update">
+            <label>Genre</label>
+            <input type="text" name="genre" required> 
+        </div>
+        <button type="submit" class="btn-update">Update</button>
+    </form>
+
+
+</section>

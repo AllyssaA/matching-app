@@ -15,8 +15,7 @@ app.engine('hbs', handlebars({
   layoutsDir: `${__dirname}/views/layouts`,
   extname: 'hbs',
   defaultLayout: 'index',
-  partialsDir: `${__dirname}/views/partials`,
-  views: `${__dirname}/views`
+  partialsDir: `${__dirname}/views/partials`
 }))
 
 // import exported connect db function in ./mongoose file

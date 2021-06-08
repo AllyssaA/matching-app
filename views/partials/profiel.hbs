@@ -9,15 +9,11 @@
             Naam
             {{#each user}}
             <p>{{this.gebruiker}}</p>
-            <a class="btn btn-success" href="/editProfiel/{{this._id}}">Bewerken</a>
         </label>
-        
         <label>
             Interesses
             <p>{{this.interesses}}</p>
-            {{/each}}
-            <button type="button" class="btn-edit">Bewerken</button>
-            
+            {{/each}}         
         </label>     
     </form>
 </section>

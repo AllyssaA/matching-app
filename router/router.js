@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const mongoose = require('mongoose')
+const { post } = require('../schema/boek.schema')
 const boek = require('../schema/boek.schema')
 const gebruiker = require('../schema/gebruiker.schema')
 
@@ -53,6 +54,11 @@ router.post('/deleteBook', async (req, res) => {
     boeken: await getBooks()
   })
 })
+
+
+// update boek
+router.post('/updateBook', (req, res, next) => {
+  })
 
 // laad de main page in met boekenlijst en gebruiker
 router.get('/', async (req, res) => {
