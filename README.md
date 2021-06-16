@@ -39,7 +39,7 @@ Screenshot van de databse MatchingApp
 
 
 Screenshot van collection books uit de database MatchingApp
-![databaseCollections](https://i.imgur.com/HlP994I.jpg)
+![databaseCollections](https://i.imgur.com/LKRp7Zw.jpg)
 
 # 📃 Screenshots van feature
 
