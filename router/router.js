@@ -58,6 +58,7 @@ router.post('/deleteBook', async (req, res) => {
 
 // update boek
 router.post('/updateBook', (req, res, next) => {
+
   })
 
 // laad de main page in met boekenlijst en gebruiker
@@ -71,11 +72,14 @@ router.get('/', async (req, res) => {
 
 // laad boekenlijst in
 router.get('/listedit', async (req, res) => {
-  res.render('listedit', {
-    layout: 'index',
-    boeken: await getBooks()
-  })
-  console.log(`rendering listedit`)
+  try {
+    res.render('listedit', {
+      layout: 'index',
+      boeken: await getBooks()
+    })
+  } catch (error) {
+    if (err) return handleError(err)
+  }
 })
 
 // laad form om boek toe te voegen
