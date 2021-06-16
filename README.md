@@ -1,4 +1,4 @@
-# 📖 matching-app 
+# 📚 Book matching-app 
 
 Een matching-app voor CMD Blok-Tech. Vind je boekmatch.
 
@@ -40,6 +40,12 @@ Screenshot van de databse MatchingApp
 
 Screenshot van collection books uit de database MatchingApp
 ![databaseCollections](https://i.imgur.com/HlP994I.jpg)
+
+# 📃 Screenshots van feature
+
+![Add a book](https://i.imgur.com/UCfg96y.png) ![Overview](https://i.imgur.com/dSA1T07.png)
+![Update a book](https://i.imgur.com/j9jalE6.jpg)
+
 # ⚖ License
 [Apache-2.0 License](https://github.com/AllyssaA/matching-app/blob/main/LICENSE)
 
