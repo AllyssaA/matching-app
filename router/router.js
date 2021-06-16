@@ -49,7 +49,7 @@ router.post('/deleteBook', async (req, res) => {
   }, (err) => {
     if (err) return console.log(err)
   })
-  res.render('listedit', {
+  res.render('listEdit', {
     layout: 'index',
     boeken: await getBooks()
   })
@@ -63,6 +63,7 @@ router.post('/updateBook', (req, res, next) => {
 
 // laad de main page in met boekenlijst en gebruiker
 router.get('/', async (req, res) => {
+  console.log('index')
   res.render('main', {
       layout: 'index',
       boeken: await getBooks(),
@@ -72,8 +73,10 @@ router.get('/', async (req, res) => {
 
 // laad boekenlijst in
 router.get('/listedit', async (req, res) => {
+    console.log('list books')
+
   try {
-    res.render('listedit', {
+    res.render('listEdit', {
       layout: 'index',
       boeken: await getBooks()
     })
@@ -85,7 +88,7 @@ router.get('/listedit', async (req, res) => {
 // laad form om boek toe te voegen
 router.get('/addbook', (req, res) => {
   console.log('rendering addbook')
-  res.render('addbook', {
+  res.render('addBook', {
     layout: 'index'
   })
  
@@ -96,7 +99,7 @@ router.post('/addbook', (req, res) => {
   console.log('rendering addBook page')
   const data = {titel: req.body.titel, auteur: req.body.auteur, genre: req.body.genre}
   saveData(data)
-  res.render('addbook', {
+  res.render('addBook', {
     layout: 'index'
   })
 })
