@@ -4,8 +4,6 @@ const app = express()
 const port = process.env.PORT || 3000
 const handlebars = require('express-handlebars')
 
-app.set('view engine', 'hbs')
-app.use(express.static('static'))
 /* To retrieve the data from a form we need to handle the http request, instead of bodyparser we can use express.json() since express 4.xx */
 app.use(express.json())
 app.use(express.urlencoded())
@@ -17,6 +15,9 @@ app.engine('hbs', handlebars({
   defaultLayout: 'index',
   partialsDir: `${__dirname}/views/partials`
 }))
+
+app.set('view engine', 'hbs')
+app.use(express.static('static'))
 
 // import exported connect db function in ./mongoose file
 const connectDBMongoose = require('./config/mongoose')
