@@ -23,7 +23,7 @@
 
 <section class="update">
     <h2>Update boekenlijst</h2>
-    <form action="/updateBoek" method="post">
+    <form action="/updateBoek" method="post" class="updateBoek">
         <label for="">
              Kies een boek <select class="input input-drop" name="id" id="id">
             {{#each data as |boek|}} 
@@ -43,7 +43,7 @@
             <label>Genre</label>
             <input type="text" name="genre" required> 
         </div>
-        <button type="submit" class="btn-update">Update</button>
+        <button type="submit" class="btn-update">Update</button>  
     </form>
 
 

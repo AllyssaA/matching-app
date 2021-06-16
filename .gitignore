@@ -52,6 +52,8 @@ web_modules/
 
 # Optional eslint cache
 .eslintcache
+.eslintrc.js
+.replit 
 
 # Microbundle cache
 .rpt2_cache/
@@ -114,3 +116,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
