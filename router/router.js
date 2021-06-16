@@ -57,10 +57,17 @@ router.post('/deleteBook', async (req, res) => {
 
 
 // update boek
-router.post('/updateBook', (req, res, next) => {
-
-  })
-
+// Async zodat Mongoose het document kan ophale en aanpassen
+router.post('/updateBoek', async (req, res, next) => {
+  try {
+    await newBoek.findOneAndUpdate({titel: req.body.id}, {titel: req.body.titel, auteur: req.body.auteur, genre: req.body.genre})
+    res.redirect('/listedit')
+  } catch (error) {
+      console.log(error)
+      res.send('YOU FAILED')
+  }
+})
+  
 // laad de main page in met boekenlijst en gebruiker
 router.get('/', async (req, res) => {
   console.log('index')
@@ -73,8 +80,7 @@ router.get('/', async (req, res) => {
 
 // laad boekenlijst in
 router.get('/listedit', async (req, res) => {
-    console.log('list books')
-
+  console.log('list books')
   try {
     res.render('listEdit', {
       layout: 'index',
@@ -97,7 +103,11 @@ router.get('/addbook', (req, res) => {
 // verstuurt de data naar database
 router.post('/addbook', (req, res) => {
   console.log('rendering addBook page')
-  const data = {titel: req.body.titel, auteur: req.body.auteur, genre: req.body.genre}
+  const data = {
+    titel: req.body.titel, 
+    auteur: req.body.auteur, 
+    genre: req.body.genre
+  }
   saveData(data)
   res.render('addBook', {
     layout: 'index'
