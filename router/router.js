@@ -57,9 +57,15 @@ router.post('/deleteBook', async (req, res) => {
 
 // update boek
 // Async zodat Mongoose het document kan ophale en aanpassen
-router.post('/updateBoek', async (req, res, next) => {
+router.post('/updateBoek', async (req, res) => {
 	try {
-		await newBoek.findOneAndUpdate({titel: req.body.id}, {titel: req.body.titel, auteur: req.body.auteur, genre: req.body.genre});
+		await newBoek.findOneAndUpdate( {
+			titel: req.body.id
+		}, {
+			titel: req.body.titel, 
+			auteur: req.body.auteur, 
+			genre: req.body.genre
+		});
 		res.redirect('/listedit');
 	} catch (error) {
 		console.log(error);
@@ -69,12 +75,15 @@ router.post('/updateBoek', async (req, res, next) => {
   
 // laad de main page in met boekenlijst en gebruiker
 router.get('/', async (req, res) => {
-	console.log('index');
-	res.render('main', {
-		layout: 'index',
-		boeken: await getBooks(),
-		user: await getUser()
-	});
+	try {
+		res.render('main', {
+			layout: 'index',
+			boeken: await getBooks(),
+			user: await getUser()
+		});
+	} catch (error) {
+		console.log('Rendering index page failed ' + error);
+	}
 });
 
 // laad boekenlijst in
@@ -86,9 +95,7 @@ router.get('/listedit', async (req, res) => {
 			boeken: await getBooks()
 		});
 	} catch (error) {
-		if (err) {
-			return handleError(err);
-		}
+		console.log('Loading list of books failed ' + error);
 	}
 });
 
@@ -102,18 +109,24 @@ router.get('/addbook', (req, res) => {
 });
 
 // verstuurt de data naar database
-router.post('/addbook', (req, res) => {
-	console.log('rendering addBook page');
-	const data = {
-		titel: req.body.titel, 
-		auteur: req.body.auteur, 
-		genre: req.body.genre
-	};
-	saveData(data);
-	res.render('addBook', {
-		layout: 'index'
-	});
+router.post('/addbook', async (req, res) => {
+	try {
+		console.log('rendering addBook page');
+		const data = {
+			titel: req.body.titel,
+			auteur: req.body.auteur,
+			genre: req.body.genre
+		};
+		await saveData(data);
+		res.render('addBook', {
+			layout: 'index'
+		});
+	} catch (error) {
+		console.log('Adding book failed ' + error);
+	}
 });
+
+
 
 // sike!
 router.use((req, res, next) => {
