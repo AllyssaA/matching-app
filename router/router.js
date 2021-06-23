@@ -12,48 +12,57 @@ const newBoek = mongoose.model('book', boek);
 const newGebruiker = mongoose.model('user', gebruiker);
 
 // functie die data pakt en deze opslaat in mongoDB
-function saveData(data) {
-	let newBook = new newBoek({
-		titel: data.titel,
-		auteur: data.auteur,
-		genre: data.genre,
-		entryDate: Date()
-	});
-
-	newBook.save((err) => {
-		console.log(`${newBook}`);
-		if (err) return handleError(err);
-	});
+async function saveData (data) {
+	try {
+		let newBook = new newBoek( {
+			titel: data.titel,
+			auteur: data.auteur,
+			genre: data.genre,
+			entryDate: Date()
+		});
+		await newBook.save();
+		console.log(`added book ${newBook}`);
+	} catch (error) {
+		console.log('saveData failed ' + error);
+	}
 }
 
 // functie die boekenlijst ophaalt
 async function getBooks() {
-	// lean() transforms mongoose object to json object
-	const data = await newBoek.find().lean();
-	return data;
+	try{
+		// lean() transforms mongoose object to json object
+		const data = await newBoek.find().lean();
+		return data;
+	} catch (error) {
+		console.log('getBooks failed ' + error);
+	}
 }
 
 //functie die gebruiker ophaalt
 async function getUser() {
-	const user = await newGebruiker.find().lean();
-	console.log(user);
-	return user;
+	try {
+		const user = await newGebruiker.find().lean();
+		console.log('User loaded from database');
+		return user;
+	} catch (error) {
+		console.log('getUser failed ' + error);
+	}
 }
 
 // function remove a book
 router.post('/deleteBook', async (req, res) => {
-	console.log(req.body.id);
-	newBoek.deleteOne({
-		_id: req.body.id
-	}, (err) => {
-		if (err) return console.log(err);
-	});
-	res.render('listEdit', {
-		layout: 'index',
-		boeken: await getBooks()
-	});
+	try {
+		await newBoek.deleteOne( {
+			_id: req.body.id
+		});
+		res.render('listEdit', {
+			layout: 'index',
+			boeken: await getBooks()
+		});
+	} catch (error) {
+		console.log('Deleting book failed ' + error);
+	}
 });
-
 
 // update boek
 // Async zodat Mongoose het document kan ophale en aanpassen
@@ -101,11 +110,14 @@ router.get('/listedit', async (req, res) => {
 
 // laad form om boek toe te voegen
 router.get('/addbook', (req, res) => {
-	console.log('rendering addbook');
-	res.render('addBook', {
-		layout: 'index'
-	});
- 
+	try {
+		console.log('rendering addbook page');
+		res.render('addBook', {
+			layout: 'index'
+		});
+	} catch (error) {
+		console.log('Could not load addbook page');
+	} 
 });
 
 // verstuurt de data naar database
@@ -118,18 +130,17 @@ router.post('/addbook', async (req, res) => {
 			genre: req.body.genre
 		};
 		await saveData(data);
-		res.render('addBook', {
-			layout: 'index'
+		res.render('listEdit', {
+			layout: 'index',
+			boeken: await getBooks()
 		});
 	} catch (error) {
 		console.log('Adding book failed ' + error);
 	}
 });
 
-
-
 // sike!
-router.use((req, res, next) => {
+router.use((req, res) => {
 	res.status(404).render('404');
 	console.log('sike 🤷‍♀️, page doesn\'t exist, check path');
 });
