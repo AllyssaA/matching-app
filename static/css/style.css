@@ -18,6 +18,10 @@ h1 {
     text-align: center;
 }
 
+a:active {
+    background-color: #3d768a;
+  }
+
 /*----------------- Navigation ---------------*/
 
 .menu {
@@ -28,7 +32,8 @@ h1 {
     position: fixed;
     bottom: 0;
     width: 100%;
-    
+    border-radius: 30px;
+    box-shadow: 4px -2px 5px -1px rgb(0 0 0 / 11%);
 }
 
 .menu a {
@@ -54,6 +59,11 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     align-items: flex-end;
     justify-items: center;
+}
+
+.menu li:hover{
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 5%);
+	background-color:#408c99;
 }
 
 .menu .profile-icon {
@@ -158,10 +168,10 @@ input{
 
 .btn-toevoegen {
     box-shadow: 0px 10px 14px -7px #9d9d9d;
-    background-color: #9DD4C9;
+    background-color: #3d768a;
+    color: #eeeeee;
     border-radius: 12px;
     cursor: pointer;
-    color: #ffffff;
     font-size: 1.25em;
     font-weight: bold;
     padding: 13px 32px;
@@ -196,6 +206,8 @@ input{
 .updateBoek {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
+    /* justify-content: center; */
+    padding: 1em 1em;
 
 }
 
@@ -210,14 +222,20 @@ input{
 }
 
 .btn-update{
-    background-color: #9DD4C9;
-    color: azure;
+    background-color: #3d768a;
+    color: #eeeeee;
     width: 50%;
     height: 50%;
     border-radius: 10px;
     border: none;
     box-shadow: 4px -2px 5px -1px rgba(0, 0, 0, 0.11);
-    cursor: pointer
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-update:hover{
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 5%);
+	background-color:#408c99;
 }
 
 .remove {
